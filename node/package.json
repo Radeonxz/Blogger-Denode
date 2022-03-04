@@ -1,0 +1,33 @@
+{
+  "name": "Blogger-Node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Radeonxz/Blogger-Node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Radeonxz/Blogger-Node/issues"
+  },
+  "homepage": "https://github.com/Radeonxz/Blogger-Node#readme",
+  "dependencies": {
+    "dompurify": "^2.3.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "jsdom": "^19.0.0",
+    "marked": "^4.0.12",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.2.4",
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

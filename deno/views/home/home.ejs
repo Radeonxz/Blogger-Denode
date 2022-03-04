@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include ('../partials/head') %>
+    <title>Deno</title>
+  </head>
+  <body>
+    <%- include ('../partials/header') %>
+    <div>
+      <div class="container-fluid d-flex justify-content-center">
+        <div class="jumbotron w-75">
+          <h1 class="display-4">Hello, world!</h1>
+          <p class="lead">
+            This is a simple hero unit, a simple jumbotron-style component for
+            calling extra attention to featured content or information.
+          </p>
+          <hr class="my-4" />
+          <p>
+            It uses utility classes for typography and spacing to space content
+            out within the larger container.
+          </p>
+          <a class="btn btn-primary btn-lg" href="/articles/new" role="button"
+            >New</a
+          >
+        </div>
+      </div>
+
+      <div class="container-fluid w-75">
+        <% articles.forEach(article => { %>
+        <div class="card mt-4">
+          <div class="card-body">
+            <h4 class="card-title"><%= article.title %></h4>
+            <div class="card-subtitle text-muted mb-2">
+              <%= article.createdAt.toLocaleDateString() %>
+            </div>
+            <div class="card-text mb-2"><%= article.description %></div>
+            <a href="articles/<%= article.slug %>" class="btn btn-primary"
+              >Read More</a
+            >
+            <a href="articles/edit/<%= article.id %>" class="btn btn-info"
+              >Edit</a
+            >
+            <form
+              action="/articles/<%= article.id %>?_method=DELETE"
+              method="POST"
+              class="d-inline"
+            >
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Custom JavaScript  -->
+    <script src="switchTheme.js"></script>
+  </body>
+</html>
