@@ -2,16 +2,20 @@ import {
   config,
   DotenvConfig
 } from "https://deno.land/std@0.127.0/dotenv/mod.ts";
-import { Bson, MongoClient } from "https://deno.land/x/mongo@v0.29.2/mod.ts";
+import { MongoClient } from "https://deno.land/x/mongo@v0.29.2/mod.ts";
+import "https://deno.land/x/dotenv/load.ts";
 
 const { MONGODB_URI, MONGODB_DB_NAME }: DotenvConfig = await config();
 
 const client = new MongoClient();
 
-await client.connect(MONGODB_URI);
+const dbUri = Deno.env.get("MONGODB_URI") || MONGODB_URI;
+const dbName = Deno.env.get("MONGODB_DB_NAME") || MONGODB_DB_NAME;
 
-const db = client.database(MONGODB_DB_NAME);
+await client.connect(dbUri);
 
-console.log(`DB: ${MONGODB_DB_NAME} connected.`);
+const db = client.database(dbName);
+
+console.log(`DB: ${dbName} connected.`);
 
 export default db;
